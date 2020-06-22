@@ -1,0 +1,3 @@
+Para el desarrollo del codigo en lenguaje C para atmel studio y para arduino, ambos integrantes del equipo locontruimos. Debido a eso se encuentran los dos codigos en las dos carpetas.
+
+Hay otros archivos que los hicimos individuales, esos se encuntran dentro de cada carpeta.
