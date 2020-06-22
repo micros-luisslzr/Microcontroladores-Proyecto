@@ -1,0 +1,9 @@
+	Materiales
+*LCD 
+*Led (Cualquier color)
+*Sensor de pulsos cardiacos xd-85c
+*Microcontrolador ATMEGA328P (Arduino uno)
+*Atmel studio
+*IC de arduino
+*Propoboard
+*Cable o Jumpers
