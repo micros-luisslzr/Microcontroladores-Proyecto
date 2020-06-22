@@ -1,0 +1,1 @@
+Esta similacion solo muestra como imprimiria en la pantalla en la lcd y se visualizarian los datos.

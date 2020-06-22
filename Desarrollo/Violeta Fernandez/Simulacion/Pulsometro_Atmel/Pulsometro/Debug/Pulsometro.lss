@@ -1,0 +1,1042 @@
+
+Pulsometro.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000010  00800100  00000702  00000796  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000702  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000002a  00800110  00800110  000007a6  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000007a6  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000007d8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000050  00000000  00000000  00000818  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000bcc  00000000  00000000  00000868  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000007b8  00000000  00000000  00001434  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000005a3  00000000  00000000  00001bec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000108  00000000  00000000  00002190  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000474  00000000  00000000  00002298  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000053a  00000000  00000000  0000270c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000078  00000000  00000000  00002c46  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 c9 00 	jmp	0x192	; 0x192 <__vector_11>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e2 e0       	ldi	r30, 0x02	; 2
+  7c:	f7 e0       	ldi	r31, 0x07	; 7
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a0 31       	cpi	r26, 0x10	; 16
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	a0 e1       	ldi	r26, 0x10	; 16
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	aa 33       	cpi	r26, 0x3A	; 58
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 f3 00 	call	0x1e6	; 0x1e6 <main>
+  9e:	0c 94 7f 03 	jmp	0x6fe	; 0x6fe <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <lcdCommand>:
+//*******************************************************
+
+//*******************************************************
+void lcdCommand( unsigned char cmnd )
+{
+  LCD_DPRT = cmnd;			
+  a6:	8b b9       	out	0x0b, r24	; 11
+  LCD_CPRT &= ~ (1<<LCD_RS);
+  a8:	28 98       	cbi	0x05, 0	; 5
+  LCD_CPRT &= ~ (1<<LCD_RW);
+  aa:	29 98       	cbi	0x05, 1	; 5
+  LCD_CPRT |= (1<<LCD_EN);	
+  ac:	2a 9a       	sbi	0x05, 2	; 5
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  ae:	85 e0       	ldi	r24, 0x05	; 5
+  b0:	8a 95       	dec	r24
+  b2:	f1 f7       	brne	.-4      	; 0xb0 <lcdCommand+0xa>
+  b4:	00 00       	nop
+  _delay_us(1);				
+  LCD_CPRT &= ~ (1<<LCD_EN);
+  b6:	2a 98       	cbi	0x05, 2	; 5
+  b8:	8f e8       	ldi	r24, 0x8F	; 143
+  ba:	91 e0       	ldi	r25, 0x01	; 1
+  bc:	01 97       	sbiw	r24, 0x01	; 1
+  be:	f1 f7       	brne	.-4      	; 0xbc <lcdCommand+0x16>
+  c0:	00 c0       	rjmp	.+0      	; 0xc2 <lcdCommand+0x1c>
+  c2:	00 00       	nop
+  c4:	08 95       	ret
+
+000000c6 <lcdData>:
+}
+
+//*******************************************************
+void lcdData( unsigned char data )
+{
+  LCD_DPRT = data;			
+  c6:	8b b9       	out	0x0b, r24	; 11
+  LCD_CPRT |= (1<<LCD_RS);	
+  c8:	28 9a       	sbi	0x05, 0	; 5
+  LCD_CPRT &= ~ (1<<LCD_RW);
+  ca:	29 98       	cbi	0x05, 1	; 5
+  LCD_CPRT |= (1<<LCD_EN);	
+  cc:	2a 9a       	sbi	0x05, 2	; 5
+  ce:	85 e0       	ldi	r24, 0x05	; 5
+  d0:	8a 95       	dec	r24
+  d2:	f1 f7       	brne	.-4      	; 0xd0 <lcdData+0xa>
+  d4:	00 00       	nop
+  _delay_us(1);				
+  LCD_CPRT &= ~ (1<<LCD_EN);
+  d6:	2a 98       	cbi	0x05, 2	; 5
+  d8:	8f e8       	ldi	r24, 0x8F	; 143
+  da:	91 e0       	ldi	r25, 0x01	; 1
+  dc:	01 97       	sbiw	r24, 0x01	; 1
+  de:	f1 f7       	brne	.-4      	; 0xdc <lcdData+0x16>
+  e0:	00 c0       	rjmp	.+0      	; 0xe2 <lcdData+0x1c>
+  e2:	00 00       	nop
+  e4:	08 95       	ret
+
+000000e6 <lcd_init>:
+}
+
+//*******************************************************
+void lcd_init()
+{
+  LCD_DDDR = 0xFF;
+  e6:	8f ef       	ldi	r24, 0xFF	; 255
+  e8:	8a b9       	out	0x0a, r24	; 10
+  LCD_CDDR = 0xFF;
+  ea:	84 b9       	out	0x04, r24	; 4
+ 
+  LCD_CPRT &=~(1<<LCD_EN);	
+  ec:	2a 98       	cbi	0x05, 2	; 5
+  ee:	8f e3       	ldi	r24, 0x3F	; 63
+  f0:	9f e1       	ldi	r25, 0x1F	; 31
+  f2:	01 97       	sbiw	r24, 0x01	; 1
+  f4:	f1 f7       	brne	.-4      	; 0xf2 <lcd_init+0xc>
+  f6:	00 c0       	rjmp	.+0      	; 0xf8 <lcd_init+0x12>
+  f8:	00 00       	nop
+  _delay_us(2000);			
+  lcdCommand(0x38);			
+  fa:	88 e3       	ldi	r24, 0x38	; 56
+  fc:	0e 94 53 00 	call	0xa6	; 0xa6 <lcdCommand>
+  lcdCommand(0x0E);			
+ 100:	8e e0       	ldi	r24, 0x0E	; 14
+ 102:	0e 94 53 00 	call	0xa6	; 0xa6 <lcdCommand>
+  lcdCommand(0x01);			
+ 106:	81 e0       	ldi	r24, 0x01	; 1
+ 108:	0e 94 53 00 	call	0xa6	; 0xa6 <lcdCommand>
+ 10c:	8f e3       	ldi	r24, 0x3F	; 63
+ 10e:	9f e1       	ldi	r25, 0x1F	; 31
+ 110:	01 97       	sbiw	r24, 0x01	; 1
+ 112:	f1 f7       	brne	.-4      	; 0x110 <lcd_init+0x2a>
+ 114:	00 c0       	rjmp	.+0      	; 0x116 <lcd_init+0x30>
+ 116:	00 00       	nop
+  _delay_us(2000);			
+  lcdCommand(0x06);			
+ 118:	86 e0       	ldi	r24, 0x06	; 6
+ 11a:	0e 94 53 00 	call	0xa6	; 0xa6 <lcdCommand>
+ 11e:	08 95       	ret
+
+00000120 <lcd_gotoxy>:
+}
+
+//*******************************************************
+void lcd_gotoxy(unsigned char x, unsigned char y)
+{  
+ 120:	cf 93       	push	r28
+ 122:	df 93       	push	r29
+ 124:	00 d0       	rcall	.+0      	; 0x126 <lcd_gotoxy+0x6>
+ 126:	00 d0       	rcall	.+0      	; 0x128 <lcd_gotoxy+0x8>
+ 128:	cd b7       	in	r28, 0x3d	; 61
+ 12a:	de b7       	in	r29, 0x3e	; 62
+ unsigned char firstCharAdr[]={0x80,0xC0,0x94,0xD4};//table 12-5  
+ 12c:	90 e8       	ldi	r25, 0x80	; 128
+ 12e:	99 83       	std	Y+1, r25	; 0x01
+ 130:	90 ec       	ldi	r25, 0xC0	; 192
+ 132:	9a 83       	std	Y+2, r25	; 0x02
+ 134:	94 e9       	ldi	r25, 0x94	; 148
+ 136:	9b 83       	std	Y+3, r25	; 0x03
+ 138:	94 ed       	ldi	r25, 0xD4	; 212
+ 13a:	9c 83       	std	Y+4, r25	; 0x04
+ lcdCommand(firstCharAdr[y-1] + x - 1);
+ 13c:	fe 01       	movw	r30, r28
+ 13e:	e6 0f       	add	r30, r22
+ 140:	f1 1d       	adc	r31, r1
+ 142:	81 50       	subi	r24, 0x01	; 1
+ 144:	90 81       	ld	r25, Z
+ 146:	89 0f       	add	r24, r25
+ 148:	0e 94 53 00 	call	0xa6	; 0xa6 <lcdCommand>
+ 14c:	8f e8       	ldi	r24, 0x8F	; 143
+ 14e:	91 e0       	ldi	r25, 0x01	; 1
+ 150:	01 97       	sbiw	r24, 0x01	; 1
+ 152:	f1 f7       	brne	.-4      	; 0x150 <lcd_gotoxy+0x30>
+ 154:	00 c0       	rjmp	.+0      	; 0x156 <lcd_gotoxy+0x36>
+ 156:	00 00       	nop
+ _delay_us(100);	
+}
+ 158:	0f 90       	pop	r0
+ 15a:	0f 90       	pop	r0
+ 15c:	0f 90       	pop	r0
+ 15e:	0f 90       	pop	r0
+ 160:	df 91       	pop	r29
+ 162:	cf 91       	pop	r28
+ 164:	08 95       	ret
+
+00000166 <lcd_print>:
+
+//*******************************************************
+void lcd_print( char * str )
+{
+ 166:	0f 93       	push	r16
+ 168:	1f 93       	push	r17
+ 16a:	cf 93       	push	r28
+ 16c:	fc 01       	movw	r30, r24
+  unsigned char i = 0 ;
+  while(str[i]!=0)
+ 16e:	80 81       	ld	r24, Z
+ 170:	88 23       	and	r24, r24
+ 172:	59 f0       	breq	.+22     	; 0x18a <lcd_print+0x24>
+ 174:	8f 01       	movw	r16, r30
+ 176:	c0 e0       	ldi	r28, 0x00	; 0
+  {
+    lcdData(str[i]);
+ 178:	0e 94 63 00 	call	0xc6	; 0xc6 <lcdData>
+    i++ ;
+ 17c:	cf 5f       	subi	r28, 0xFF	; 255
+
+//*******************************************************
+void lcd_print( char * str )
+{
+  unsigned char i = 0 ;
+  while(str[i]!=0)
+ 17e:	f8 01       	movw	r30, r16
+ 180:	ec 0f       	add	r30, r28
+ 182:	f1 1d       	adc	r31, r1
+ 184:	80 81       	ld	r24, Z
+ 186:	81 11       	cpse	r24, r1
+ 188:	f7 cf       	rjmp	.-18     	; 0x178 <lcd_print+0x12>
+  {
+    lcdData(str[i]);
+    i++ ;
+  }
+}
+ 18a:	cf 91       	pop	r28
+ 18c:	1f 91       	pop	r17
+ 18e:	0f 91       	pop	r16
+ 190:	08 95       	ret
+
+00000192 <__vector_11>:
+volatile int thresh = 512;					// se utiliza encontrar momentos instantáneos de latidos cardíacos, sembrados
+volatile int amp = 100;						// se utiliza para mantener la amplitud de la forma de onda del pulso, sin semillas
+volatile firstBeat;							// se utiliza para sembrar la matriz de velocidad, así que comenzamos con BPM razonable //Bool true
+volatile secondBeat = 0;					// se utiliza para sembrar la matriz de velocidad, así que comenzamos con BPM razonable			//Bool false
+
+ISR(TIMER1_COMPA_vect)  {
+ 192:	1f 92       	push	r1
+ 194:	0f 92       	push	r0
+ 196:	0f b6       	in	r0, 0x3f	; 63
+ 198:	0f 92       	push	r0
+ 19a:	11 24       	eor	r1, r1
+ 19c:	8f 93       	push	r24
+ 19e:	9f 93       	push	r25
+	
+	//PORTB=PORTB|0X01;							//Pone Aa 1 el bit PB5 para encender led
+	PulsoPin=ADCH;								//Lee el resultado de la conversión
+ 1a0:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <__DATA_REGION_ORIGIN__+0x19>
+ 1a4:	90 e0       	ldi	r25, 0x00	; 0
+ 1a6:	90 93 1f 01 	sts	0x011F, r25	; 0x80011f <PulsoPin+0x1>
+ 1aa:	80 93 1e 01 	sts	0x011E, r24	; 0x80011e <PulsoPin>
+	ADCSRA=0b11000111;							//Configuracion del ADC, preescalador de 128 para tener una frecuencia de 125kHz que es 8uS el tiempo de conversion
+ 1ae:	87 ec       	ldi	r24, 0xC7	; 199
+ 1b0:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <__DATA_REGION_ORIGIN__+0x1a>
+	UDR0=PulsoPin;								//Envia el valor obtenido por la UART
+ 1b4:	80 91 1e 01 	lds	r24, 0x011E	; 0x80011e <PulsoPin>
+ 1b8:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__DATA_REGION_ORIGIN__+0x66>
+	//PORTB=PORTB&0XFE;							//Pone el bit PB5 en 0 pra apagar  el led
+	
+	TCCR1A=0;									//Activacion del CTC como modo de operación
+ 1bc:	10 92 80 00 	sts	0x0080, r1	; 0x800080 <__DATA_REGION_ORIGIN__+0x20>
+	TCCR1B=0b00001100;							//Preescalador de 256 para la interrupción,
+ 1c0:	8c e0       	ldi	r24, 0x0C	; 12
+ 1c2:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__DATA_REGION_ORIGIN__+0x21>
+	OCR1A=125;									//ESTABLECER LA PARTE SUPERIOR DEL CONTEO EN 124 PARA UNA TASA DE MUESTRA DE 500Hz
+ 1c6:	8d e7       	ldi	r24, 0x7D	; 125
+ 1c8:	90 e0       	ldi	r25, 0x00	; 0
+ 1ca:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__DATA_REGION_ORIGIN__+0x29>
+ 1ce:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__DATA_REGION_ORIGIN__+0x28>
+	TIMSK1= 0b00000010;							//HABILITAR INTERRUPCIONES EN EL PARTIDO ENTRE TIMER1 Y OCR1A
+ 1d2:	82 e0       	ldi	r24, 0x02	; 2
+ 1d4:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <__DATA_REGION_ORIGIN__+0xf>
+	
+}
+ 1d8:	9f 91       	pop	r25
+ 1da:	8f 91       	pop	r24
+ 1dc:	0f 90       	pop	r0
+ 1de:	0f be       	out	0x3f, r0	; 63
+ 1e0:	0f 90       	pop	r0
+ 1e2:	1f 90       	pop	r1
+ 1e4:	18 95       	reti
+
+000001e6 <main>:
+////////////////////////////////////////////////
+
+int main(void) 
+{	
+ 1e6:	4f 92       	push	r4
+ 1e8:	5f 92       	push	r5
+ 1ea:	6f 92       	push	r6
+ 1ec:	7f 92       	push	r7
+ 1ee:	8f 92       	push	r8
+ 1f0:	9f 92       	push	r9
+ 1f2:	af 92       	push	r10
+ 1f4:	bf 92       	push	r11
+ 1f6:	cf 92       	push	r12
+ 1f8:	df 92       	push	r13
+ 1fa:	ef 92       	push	r14
+ 1fc:	ff 92       	push	r15
+ 1fe:	0f 93       	push	r16
+ 200:	1f 93       	push	r17
+ 202:	cf 93       	push	r28
+ 204:	df 93       	push	r29
+	lcd_init();
+ 206:	0e 94 73 00 	call	0xe6	; 0xe6 <lcd_init>
+	lcd_gotoxy(1,1);
+ 20a:	61 e0       	ldi	r22, 0x01	; 1
+ 20c:	81 e0       	ldi	r24, 0x01	; 1
+ 20e:	0e 94 90 00 	call	0x120	; 0x120 <lcd_gotoxy>
+	lcd_print(" BPM");
+ 212:	8a e0       	ldi	r24, 0x0A	; 10
+ 214:	91 e0       	ldi	r25, 0x01	; 1
+ 216:	0e 94 b3 00 	call	0x166	; 0x166 <lcd_print>
+	lcd_gotoxy(1,2);
+ 21a:	62 e0       	ldi	r22, 0x02	; 2
+ 21c:	81 e0       	ldi	r24, 0x01	; 1
+ 21e:	0e 94 90 00 	call	0x120	; 0x120 <lcd_gotoxy>
+	lcd_print(BPM);
+ 222:	80 91 36 01 	lds	r24, 0x0136	; 0x800136 <BPM>
+ 226:	90 91 37 01 	lds	r25, 0x0137	; 0x800137 <BPM+0x1>
+ 22a:	0e 94 b3 00 	call	0x166	; 0x166 <lcd_print>
+	
+	//////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	DDRB=0xFF|0b00001000;									//Todo el puerto B como salida
+ 22e:	8f ef       	ldi	r24, 0xFF	; 255
+ 230:	84 b9       	out	0x04, r24	; 4
+	DDRC=0;										//Todo el puerto C como entrada
+ 232:	17 b8       	out	0x07, r1	; 7
+	
+	UCSR0B=0b00001000;							//Habilita la transmision por la UART
+ 234:	88 e0       	ldi	r24, 0x08	; 8
+ 236:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__DATA_REGION_ORIGIN__+0x61>
+	UBRR0=103;									//Configurar velocidad a 9600 badios
+ 23a:	87 e6       	ldi	r24, 0x67	; 103
+ 23c:	90 e0       	ldi	r25, 0x00	; 0
+ 23e:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__DATA_REGION_ORIGIN__+0x65>
+ 242:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__DATA_REGION_ORIGIN__+0x64>
+	
+	TCCR1A=0;									//Activacion del CTC como modo de operación
+ 246:	10 92 80 00 	sts	0x0080, r1	; 0x800080 <__DATA_REGION_ORIGIN__+0x20>
+	TCCR1B=0b00001100;							//Preescalador de 256 para la interrupción, configuracion de timmer
+ 24a:	8c e0       	ldi	r24, 0x0C	; 12
+ 24c:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__DATA_REGION_ORIGIN__+0x21>
+	OCR1A= 125;									//ESTABLECER LA PARTE SUPERIOR DEL CONTEO EN 124 PARA UNA TASA DE MUESTRA DE 500Hz
+ 250:	8d e7       	ldi	r24, 0x7D	; 125
+ 252:	90 e0       	ldi	r25, 0x00	; 0
+ 254:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__DATA_REGION_ORIGIN__+0x29>
+ 258:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__DATA_REGION_ORIGIN__+0x28>
+	TIMSK1= 0b00000010;							//HABILITA INTERRUPCION DE COMPARACION A DEL TIMER 1
+ 25c:	82 e0       	ldi	r24, 0x02	; 2
+ 25e:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <__DATA_REGION_ORIGIN__+0xf>
+	
+	ADMUX= 0b11100000;							//SELECCIONA FUENTE DE AREF 1.1v, TIPO DE JUSTIFICACION, CANAL DE CONVERSION A0/BC0
+ 262:	80 ee       	ldi	r24, 0xE0	; 224
+ 264:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <__DATA_REGION_ORIGIN__+0x1c>
+	ADCSRA= 0b11000111;							//CONFIGURACIONES VARIAS AL ADC
+ 268:	87 ec       	ldi	r24, 0xC7	; 199
+ 26a:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <__DATA_REGION_ORIGIN__+0x1a>
+	sei();										//HABILTA GLOBALMENTE LAS INTERRUPCIONES
+ 26e:	78 94       	sei
+		
+		Signal = PINC|0X01;						//Lee el pulso del sensor
+		sampleCounter += 2;                     //Realizar un seguimiento del tiempo en mS con esta variable
+		int N = sampleCounter - lastBeatTime;   //controlar el tiempo transcurrido desde el último latido para evitar ruidos
+		
+		if (Signal < thresh && N > (IBI/5)*3){			//evite el ruido dicrótico al esperar 3/5 del último IBI
+ 270:	0f 2e       	mov	r0, r31
+ 272:	f5 e0       	ldi	r31, 0x05	; 5
+ 274:	ef 2e       	mov	r14, r31
+ 276:	f1 2c       	mov	r15, r1
+ 278:	f0 2d       	mov	r31, r0
+				for(int i=0; i<=8; i++){					// borrar la variable Total en ejecución
+					rate[i] = rate[i+1];                  // y soltar el valor IBI más antiguo
+					runningTotal += rate[i];              // sumar los 9 valores IBI más antiguos
+				}
+
+				rate[9] = IBI;                          // agregar el último IBI a la matriz de tarifas
+ 27a:	0f 2e       	mov	r0, r31
+ 27c:	f0 e2       	ldi	r31, 0x20	; 32
+ 27e:	6f 2e       	mov	r6, r31
+ 280:	f1 e0       	ldi	r31, 0x01	; 1
+ 282:	7f 2e       	mov	r7, r31
+ 284:	f0 2d       	mov	r31, r0
+				runningTotal += rate[9];                // agregue el último IBI para ejecutar Total
+				runningTotal /= 10;                     // promediar los últimos 10 valores de IBI
+				BPM = 60000/runningTotal;               // ¿Cuántos latidos pueden caber en un minuto? eso es BPM!
+ 286:	0f 2e       	mov	r0, r31
+ 288:	fa e0       	ldi	r31, 0x0A	; 10
+ 28a:	4f 2e       	mov	r4, r31
+ 28c:	51 2c       	mov	r5, r1
+ 28e:	f0 2d       	mov	r31, r0
+ 290:	0f 2e       	mov	r0, r31
+ 292:	f0 e6       	ldi	r31, 0x60	; 96
+ 294:	8f 2e       	mov	r8, r31
+ 296:	fa ee       	ldi	r31, 0xEA	; 234
+ 298:	9f 2e       	mov	r9, r31
+ 29a:	a1 2c       	mov	r10, r1
+ 29c:	b1 2c       	mov	r11, r1
+ 29e:	f0 2d       	mov	r31, r0
+				QS = 1;                              // establecer el indicador de auto cuantificado	//CAMBIAR TRUE POR 1
+ 2a0:	cc 24       	eor	r12, r12
+ 2a2:	c3 94       	inc	r12
+ 2a4:	d1 2c       	mov	r13, r1
+			P = thresh;								// restablecer estos para la próxima vez
+			T = thresh;
+		}
+
+		if (N > 2500){								// si pasan 2.5 segundos sin latir
+			thresh = 512;                          // establecer umbral predeterminado
+ 2a6:	00 e0       	ldi	r16, 0x00	; 0
+ 2a8:	12 e0       	ldi	r17, 0x02	; 2
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
+	
+	
+	while(1){
+		
+		cli();									//Se activa cuando Timer2 cuenta hasta 124
+ 2aa:	f8 94       	cli
+		
+		Signal = PINC|0X01;						//Lee el pulso del sensor
+ 2ac:	86 b1       	in	r24, 0x06	; 6
+ 2ae:	81 60       	ori	r24, 0x01	; 1
+ 2b0:	90 e0       	ldi	r25, 0x00	; 0
+ 2b2:	90 93 39 01 	sts	0x0139, r25	; 0x800139 <Signal+0x1>
+ 2b6:	80 93 38 01 	sts	0x0138, r24	; 0x800138 <Signal>
+		sampleCounter += 2;                     //Realizar un seguimiento del tiempo en mS con esta variable
+ 2ba:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <sampleCounter>
+ 2be:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <sampleCounter+0x1>
+ 2c2:	a0 91 18 01 	lds	r26, 0x0118	; 0x800118 <sampleCounter+0x2>
+ 2c6:	b0 91 19 01 	lds	r27, 0x0119	; 0x800119 <sampleCounter+0x3>
+ 2ca:	02 96       	adiw	r24, 0x02	; 2
+ 2cc:	a1 1d       	adc	r26, r1
+ 2ce:	b1 1d       	adc	r27, r1
+ 2d0:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <sampleCounter>
+ 2d4:	90 93 17 01 	sts	0x0117, r25	; 0x800117 <sampleCounter+0x1>
+ 2d8:	a0 93 18 01 	sts	0x0118, r26	; 0x800118 <sampleCounter+0x2>
+ 2dc:	b0 93 19 01 	sts	0x0119, r27	; 0x800119 <sampleCounter+0x3>
+		int N = sampleCounter - lastBeatTime;   //controlar el tiempo transcurrido desde el último latido para evitar ruidos
+ 2e0:	40 91 16 01 	lds	r20, 0x0116	; 0x800116 <sampleCounter>
+ 2e4:	50 91 17 01 	lds	r21, 0x0117	; 0x800117 <sampleCounter+0x1>
+ 2e8:	60 91 18 01 	lds	r22, 0x0118	; 0x800118 <sampleCounter+0x2>
+ 2ec:	70 91 19 01 	lds	r23, 0x0119	; 0x800119 <sampleCounter+0x3>
+ 2f0:	80 91 12 01 	lds	r24, 0x0112	; 0x800112 <lastBeatTime>
+ 2f4:	90 91 13 01 	lds	r25, 0x0113	; 0x800113 <lastBeatTime+0x1>
+ 2f8:	a0 91 14 01 	lds	r26, 0x0114	; 0x800114 <lastBeatTime+0x2>
+ 2fc:	b0 91 15 01 	lds	r27, 0x0115	; 0x800115 <lastBeatTime+0x3>
+ 300:	ea 01       	movw	r28, r20
+ 302:	c8 1b       	sub	r28, r24
+ 304:	d9 0b       	sbc	r29, r25
+		
+		if (Signal < thresh && N > (IBI/5)*3){			//evite el ruido dicrótico al esperar 3/5 del último IBI
+ 306:	20 91 38 01 	lds	r18, 0x0138	; 0x800138 <Signal>
+ 30a:	30 91 39 01 	lds	r19, 0x0139	; 0x800139 <Signal+0x1>
+ 30e:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <thresh>
+ 312:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <thresh+0x1>
+ 316:	28 17       	cp	r18, r24
+ 318:	39 07       	cpc	r19, r25
+ 31a:	14 f5       	brge	.+68     	; 0x360 <main+0x17a>
+ 31c:	80 91 08 01 	lds	r24, 0x0108	; 0x800108 <IBI>
+ 320:	90 91 09 01 	lds	r25, 0x0109	; 0x800109 <IBI+0x1>
+ 324:	b7 01       	movw	r22, r14
+ 326:	0e 94 16 03 	call	0x62c	; 0x62c <__divmodhi4>
+ 32a:	cb 01       	movw	r24, r22
+ 32c:	88 0f       	add	r24, r24
+ 32e:	99 1f       	adc	r25, r25
+ 330:	68 0f       	add	r22, r24
+ 332:	79 1f       	adc	r23, r25
+ 334:	6c 17       	cp	r22, r28
+ 336:	7d 07       	cpc	r23, r29
+ 338:	9c f4       	brge	.+38     	; 0x360 <main+0x17a>
+			if (Signal < T){							//T es el comedero
+ 33a:	20 91 38 01 	lds	r18, 0x0138	; 0x800138 <Signal>
+ 33e:	30 91 39 01 	lds	r19, 0x0139	; 0x800139 <Signal+0x1>
+ 342:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <T>
+ 346:	90 91 05 01 	lds	r25, 0x0105	; 0x800105 <T+0x1>
+ 34a:	28 17       	cp	r18, r24
+ 34c:	39 07       	cpc	r19, r25
+ 34e:	44 f4       	brge	.+16     	; 0x360 <main+0x17a>
+				T = Signal;							//realizar un seguimiento del punto más bajo en la onda de pulso
+ 350:	80 91 38 01 	lds	r24, 0x0138	; 0x800138 <Signal>
+ 354:	90 91 39 01 	lds	r25, 0x0139	; 0x800139 <Signal+0x1>
+ 358:	90 93 05 01 	sts	0x0105, r25	; 0x800105 <T+0x1>
+ 35c:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <T>
+			}
+		}
+		
+		if(Signal > thresh && Signal > P){          // la condición de trilla ayuda a evitar el ruido
+ 360:	20 91 38 01 	lds	r18, 0x0138	; 0x800138 <Signal>
+ 364:	30 91 39 01 	lds	r19, 0x0139	; 0x800139 <Signal+0x1>
+ 368:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <thresh>
+ 36c:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <thresh+0x1>
+ 370:	82 17       	cp	r24, r18
+ 372:	93 07       	cpc	r25, r19
+ 374:	9c f4       	brge	.+38     	; 0x39c <main+0x1b6>
+ 376:	20 91 38 01 	lds	r18, 0x0138	; 0x800138 <Signal>
+ 37a:	30 91 39 01 	lds	r19, 0x0139	; 0x800139 <Signal+0x1>
+ 37e:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <P>
+ 382:	90 91 07 01 	lds	r25, 0x0107	; 0x800107 <P+0x1>
+ 386:	82 17       	cp	r24, r18
+ 388:	93 07       	cpc	r25, r19
+ 38a:	44 f4       	brge	.+16     	; 0x39c <main+0x1b6>
+			P = Signal;                             // P es el pico
+ 38c:	80 91 38 01 	lds	r24, 0x0138	; 0x800138 <Signal>
+ 390:	90 91 39 01 	lds	r25, 0x0139	; 0x800139 <Signal+0x1>
+ 394:	90 93 07 01 	sts	0x0107, r25	; 0x800107 <P+0x1>
+ 398:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <P>
+		}											// realizar un seguimiento del punto más alto en la onda de pulso
+		
+		// AHORA ES HORA DE BUSCAR EL CORAZÓN
+		// la señal aumenta de valor cada vez que hay un pulso
+		
+		if (N > 250){															// evitar el ruido de alta frecuencia //cambie false por 0
+ 39c:	cb 3f       	cpi	r28, 0xFB	; 251
+ 39e:	d1 05       	cpc	r29, r1
+ 3a0:	0c f4       	brge	.+2      	; 0x3a4 <main+0x1be>
+ 3a2:	ab c0       	rjmp	.+342    	; 0x4fa <__LOCK_REGION_LENGTH__+0xfa>
+			if
+			( (Signal > thresh) && (Pulse == 0) && (N > (IBI/5)*3) ){
+ 3a4:	20 91 38 01 	lds	r18, 0x0138	; 0x800138 <Signal>
+ 3a8:	30 91 39 01 	lds	r19, 0x0139	; 0x800139 <Signal+0x1>
+ 3ac:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <thresh>
+ 3b0:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <thresh+0x1>
+ 3b4:	82 17       	cp	r24, r18
+ 3b6:	93 07       	cpc	r25, r19
+ 3b8:	0c f0       	brlt	.+2      	; 0x3bc <main+0x1d6>
+ 3ba:	9f c0       	rjmp	.+318    	; 0x4fa <__LOCK_REGION_LENGTH__+0xfa>
+ 3bc:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <Pulse>
+ 3c0:	90 91 1d 01 	lds	r25, 0x011D	; 0x80011d <Pulse+0x1>
+ 3c4:	89 2b       	or	r24, r25
+ 3c6:	09 f0       	breq	.+2      	; 0x3ca <main+0x1e4>
+ 3c8:	98 c0       	rjmp	.+304    	; 0x4fa <__LOCK_REGION_LENGTH__+0xfa>
+ 3ca:	80 91 08 01 	lds	r24, 0x0108	; 0x800108 <IBI>
+ 3ce:	90 91 09 01 	lds	r25, 0x0109	; 0x800109 <IBI+0x1>
+ 3d2:	b7 01       	movw	r22, r14
+ 3d4:	0e 94 16 03 	call	0x62c	; 0x62c <__divmodhi4>
+ 3d8:	cb 01       	movw	r24, r22
+ 3da:	88 0f       	add	r24, r24
+ 3dc:	99 1f       	adc	r25, r25
+ 3de:	68 0f       	add	r22, r24
+ 3e0:	79 1f       	adc	r23, r25
+ 3e2:	6c 17       	cp	r22, r28
+ 3e4:	7d 07       	cpc	r23, r29
+ 3e6:	0c f0       	brlt	.+2      	; 0x3ea <main+0x204>
+ 3e8:	88 c0       	rjmp	.+272    	; 0x4fa <__LOCK_REGION_LENGTH__+0xfa>
+				Pulse = 0;															// establecer la bandera de pulso cuando creemos que hay un pulso   //cambie false por 0
+ 3ea:	10 92 1d 01 	sts	0x011D, r1	; 0x80011d <Pulse+0x1>
+ 3ee:	10 92 1c 01 	sts	0x011C, r1	; 0x80011c <Pulse>
+				
+				IBI = sampleCounter - lastBeatTime;								// medir el tiempo entre latidos en mS
+ 3f2:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <sampleCounter>
+ 3f6:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <sampleCounter+0x1>
+ 3fa:	a0 91 18 01 	lds	r26, 0x0118	; 0x800118 <sampleCounter+0x2>
+ 3fe:	b0 91 19 01 	lds	r27, 0x0119	; 0x800119 <sampleCounter+0x3>
+ 402:	40 91 12 01 	lds	r20, 0x0112	; 0x800112 <lastBeatTime>
+ 406:	50 91 13 01 	lds	r21, 0x0113	; 0x800113 <lastBeatTime+0x1>
+ 40a:	60 91 14 01 	lds	r22, 0x0114	; 0x800114 <lastBeatTime+0x2>
+ 40e:	70 91 15 01 	lds	r23, 0x0115	; 0x800115 <lastBeatTime+0x3>
+ 412:	84 1b       	sub	r24, r20
+ 414:	95 0b       	sbc	r25, r21
+ 416:	90 93 09 01 	sts	0x0109, r25	; 0x800109 <IBI+0x1>
+ 41a:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <IBI>
+				lastBeatTime = sampleCounter;										// llevar un registro del tiempo para el próximo pulso
+ 41e:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <sampleCounter>
+ 422:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <sampleCounter+0x1>
+ 426:	a0 91 18 01 	lds	r26, 0x0118	; 0x800118 <sampleCounter+0x2>
+ 42a:	b0 91 19 01 	lds	r27, 0x0119	; 0x800119 <sampleCounter+0x3>
+ 42e:	80 93 12 01 	sts	0x0112, r24	; 0x800112 <lastBeatTime>
+ 432:	90 93 13 01 	sts	0x0113, r25	; 0x800113 <lastBeatTime+0x1>
+ 436:	a0 93 14 01 	sts	0x0114, r26	; 0x800114 <lastBeatTime+0x2>
+ 43a:	b0 93 15 01 	sts	0x0115, r27	; 0x800115 <lastBeatTime+0x3>
+				
+				if(secondBeat){													// si este es el segundo tiempo, si secondBeat == TRUE
+ 43e:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <__data_end>
+ 442:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <__data_end+0x1>
+ 446:	89 2b       	or	r24, r25
+ 448:	09 f4       	brne	.+2      	; 0x44c <__LOCK_REGION_LENGTH__+0x4c>
+ 44a:	cb c0       	rjmp	.+406    	; 0x5e2 <__LOCK_REGION_LENGTH__+0x1e2>
+					secondBeat = 0;												// limpia segunda bandera de Beat  //cambie false por 0
+ 44c:	10 92 11 01 	sts	0x0111, r1	; 0x800111 <__data_end+0x1>
+ 450:	10 92 10 01 	sts	0x0110, r1	; 0x800110 <__data_end>
+					for(int i=0; i<=9; i++){										// sembrar el total acumulado para obtener un BPM realista al inicio
+ 454:	80 e0       	ldi	r24, 0x00	; 0
+ 456:	90 e0       	ldi	r25, 0x00	; 0
+						rate[i] = IBI;
+ 458:	20 91 08 01 	lds	r18, 0x0108	; 0x800108 <IBI>
+ 45c:	30 91 09 01 	lds	r19, 0x0109	; 0x800109 <IBI+0x1>
+ 460:	fc 01       	movw	r30, r24
+ 462:	ee 0f       	add	r30, r30
+ 464:	ff 1f       	adc	r31, r31
+ 466:	e0 5e       	subi	r30, 0xE0	; 224
+ 468:	fe 4f       	sbci	r31, 0xFE	; 254
+ 46a:	31 83       	std	Z+1, r19	; 0x01
+ 46c:	20 83       	st	Z, r18
+				IBI = sampleCounter - lastBeatTime;								// medir el tiempo entre latidos en mS
+				lastBeatTime = sampleCounter;										// llevar un registro del tiempo para el próximo pulso
+				
+				if(secondBeat){													// si este es el segundo tiempo, si secondBeat == TRUE
+					secondBeat = 0;												// limpia segunda bandera de Beat  //cambie false por 0
+					for(int i=0; i<=9; i++){										// sembrar el total acumulado para obtener un BPM realista al inicio
+ 46e:	01 96       	adiw	r24, 0x01	; 1
+ 470:	8a 30       	cpi	r24, 0x0A	; 10
+ 472:	91 05       	cpc	r25, r1
+ 474:	89 f7       	brne	.-30     	; 0x458 <__LOCK_REGION_LENGTH__+0x58>
+						rate[i] = IBI;
+					}
+				}
+				
+				if(firstBeat){														// si es la primera vez que encontramos un ritmo, si firstBeat == TRUE
+ 476:	80 91 34 01 	lds	r24, 0x0134	; 0x800134 <firstBeat>
+ 47a:	90 91 35 01 	lds	r25, 0x0135	; 0x800135 <firstBeat+0x1>
+ 47e:	89 2b       	or	r24, r25
+ 480:	09 f0       	breq	.+2      	; 0x484 <__LOCK_REGION_LENGTH__+0x84>
+ 482:	b6 c0       	rjmp	.+364    	; 0x5f0 <__LOCK_REGION_LENGTH__+0x1f0>
+				IBI = sampleCounter - lastBeatTime;								// medir el tiempo entre latidos en mS
+				lastBeatTime = sampleCounter;										// llevar un registro del tiempo para el próximo pulso
+				
+				if(secondBeat){													// si este es el segundo tiempo, si secondBeat == TRUE
+					secondBeat = 0;												// limpia segunda bandera de Beat  //cambie false por 0
+					for(int i=0; i<=9; i++){										// sembrar el total acumulado para obtener un BPM realista al inicio
+ 484:	20 e0       	ldi	r18, 0x00	; 0
+ 486:	30 e0       	ldi	r19, 0x00	; 0
+ 488:	80 e0       	ldi	r24, 0x00	; 0
+ 48a:	90 e0       	ldi	r25, 0x00	; 0
+				
+				// mantener un total acumulado de los últimos 10 valores de IBI
+				int runningTotal = 0;						// clear the runningTotal variable					//Tenia world //Cambie de word a int
+
+				for(int i=0; i<=8; i++){					// borrar la variable Total en ejecución
+					rate[i] = rate[i+1];                  // y soltar el valor IBI más antiguo
+ 48c:	a9 01       	movw	r20, r18
+ 48e:	4f 5f       	subi	r20, 0xFF	; 255
+ 490:	5f 4f       	sbci	r21, 0xFF	; 255
+ 492:	fa 01       	movw	r30, r20
+ 494:	ee 0f       	add	r30, r30
+ 496:	ff 1f       	adc	r31, r31
+ 498:	e0 5e       	subi	r30, 0xE0	; 224
+ 49a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 49c:	60 81       	ld	r22, Z
+ 49e:	71 81       	ldd	r23, Z+1	; 0x01
+ 4a0:	22 0f       	add	r18, r18
+ 4a2:	33 1f       	adc	r19, r19
+ 4a4:	f9 01       	movw	r30, r18
+ 4a6:	e0 5e       	subi	r30, 0xE0	; 224
+ 4a8:	fe 4f       	sbci	r31, 0xFE	; 254
+ 4aa:	71 83       	std	Z+1, r23	; 0x01
+ 4ac:	60 83       	st	Z, r22
+					runningTotal += rate[i];              // sumar los 9 valores IBI más antiguos
+ 4ae:	20 81       	ld	r18, Z
+ 4b0:	31 81       	ldd	r19, Z+1	; 0x01
+ 4b2:	82 0f       	add	r24, r18
+ 4b4:	93 1f       	adc	r25, r19
+				}
+				
+				// mantener un total acumulado de los últimos 10 valores de IBI
+				int runningTotal = 0;						// clear the runningTotal variable					//Tenia world //Cambie de word a int
+
+				for(int i=0; i<=8; i++){					// borrar la variable Total en ejecución
+ 4b6:	9a 01       	movw	r18, r20
+ 4b8:	49 30       	cpi	r20, 0x09	; 9
+ 4ba:	51 05       	cpc	r21, r1
+ 4bc:	39 f7       	brne	.-50     	; 0x48c <__LOCK_REGION_LENGTH__+0x8c>
+					rate[i] = rate[i+1];                  // y soltar el valor IBI más antiguo
+					runningTotal += rate[i];              // sumar los 9 valores IBI más antiguos
+				}
+
+				rate[9] = IBI;                          // agregar el último IBI a la matriz de tarifas
+ 4be:	20 91 08 01 	lds	r18, 0x0108	; 0x800108 <IBI>
+ 4c2:	30 91 09 01 	lds	r19, 0x0109	; 0x800109 <IBI+0x1>
+ 4c6:	f3 01       	movw	r30, r6
+ 4c8:	33 8b       	std	Z+19, r19	; 0x13
+ 4ca:	22 8b       	std	Z+18, r18	; 0x12
+				runningTotal += rate[9];                // agregue el último IBI para ejecutar Total
+ 4cc:	22 89       	ldd	r18, Z+18	; 0x12
+ 4ce:	33 89       	ldd	r19, Z+19	; 0x13
+ 4d0:	82 0f       	add	r24, r18
+ 4d2:	93 1f       	adc	r25, r19
+				runningTotal /= 10;                     // promediar los últimos 10 valores de IBI
+				BPM = 60000/runningTotal;               // ¿Cuántos latidos pueden caber en un minuto? eso es BPM!
+ 4d4:	b2 01       	movw	r22, r4
+ 4d6:	0e 94 16 03 	call	0x62c	; 0x62c <__divmodhi4>
+ 4da:	9b 01       	movw	r18, r22
+ 4dc:	77 0f       	add	r23, r23
+ 4de:	44 0b       	sbc	r20, r20
+ 4e0:	55 0b       	sbc	r21, r21
+ 4e2:	c5 01       	movw	r24, r10
+ 4e4:	b4 01       	movw	r22, r8
+ 4e6:	0e 94 2a 03 	call	0x654	; 0x654 <__divmodsi4>
+ 4ea:	30 93 37 01 	sts	0x0137, r19	; 0x800137 <BPM+0x1>
+ 4ee:	20 93 36 01 	sts	0x0136, r18	; 0x800136 <BPM>
+				QS = 1;                              // establecer el indicador de auto cuantificado	//CAMBIAR TRUE POR 1
+ 4f2:	d0 92 1b 01 	sts	0x011B, r13	; 0x80011b <QS+0x1>
+ 4f6:	c0 92 1a 01 	sts	0x011A, r12	; 0x80011a <QS>
+				
+				// LA BANDERA QS NO SE LIMPIA DENTRO DE ESTE ISR
+			}
+		}
+		
+		if (Signal < thresh && Pulse == 1){   // cuando los valores bajan, el ritmo termina			//SE CAMBIA EL TRUE POR 1
+ 4fa:	20 91 38 01 	lds	r18, 0x0138	; 0x800138 <Signal>
+ 4fe:	30 91 39 01 	lds	r19, 0x0139	; 0x800139 <Signal+0x1>
+ 502:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <thresh>
+ 506:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <thresh+0x1>
+ 50a:	28 17       	cp	r18, r24
+ 50c:	39 07       	cpc	r19, r25
+ 50e:	e4 f5       	brge	.+120    	; 0x588 <__LOCK_REGION_LENGTH__+0x188>
+ 510:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <Pulse>
+ 514:	90 91 1d 01 	lds	r25, 0x011D	; 0x80011d <Pulse+0x1>
+ 518:	01 97       	sbiw	r24, 0x01	; 1
+ 51a:	b1 f5       	brne	.+108    	; 0x588 <__LOCK_REGION_LENGTH__+0x188>
+
+			Pulse = 0;								// cuando los valores están bajando, el ritmo ha terminado			//Cambie un false por 0
+ 51c:	10 92 1d 01 	sts	0x011D, r1	; 0x80011d <Pulse+0x1>
+ 520:	10 92 1c 01 	sts	0x011C, r1	; 0x80011c <Pulse>
+			amp = P - T;							// obtener amplitud de la onda de pulso
+ 524:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <P>
+ 528:	90 91 07 01 	lds	r25, 0x0107	; 0x800107 <P+0x1>
+ 52c:	20 91 04 01 	lds	r18, 0x0104	; 0x800104 <T>
+ 530:	30 91 05 01 	lds	r19, 0x0105	; 0x800105 <T+0x1>
+ 534:	82 1b       	sub	r24, r18
+ 536:	93 0b       	sbc	r25, r19
+ 538:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__data_start+0x1>
+ 53c:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
+			thresh = amp/2 + T;						// establecer la trilla al 50% de la amplitud
+ 540:	40 91 00 01 	lds	r20, 0x0100	; 0x800100 <__data_start>
+ 544:	50 91 01 01 	lds	r21, 0x0101	; 0x800101 <__data_start+0x1>
+ 548:	20 91 04 01 	lds	r18, 0x0104	; 0x800104 <T>
+ 54c:	30 91 05 01 	lds	r19, 0x0105	; 0x800105 <T+0x1>
+ 550:	ca 01       	movw	r24, r20
+ 552:	99 23       	and	r25, r25
+ 554:	0c f4       	brge	.+2      	; 0x558 <__LOCK_REGION_LENGTH__+0x158>
+ 556:	01 96       	adiw	r24, 0x01	; 1
+ 558:	95 95       	asr	r25
+ 55a:	87 95       	ror	r24
+ 55c:	82 0f       	add	r24, r18
+ 55e:	93 1f       	adc	r25, r19
+ 560:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <thresh+0x1>
+ 564:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <thresh>
+			P = thresh;								// restablecer estos para la próxima vez
+ 568:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <thresh>
+ 56c:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <thresh+0x1>
+ 570:	90 93 07 01 	sts	0x0107, r25	; 0x800107 <P+0x1>
+ 574:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <P>
+			T = thresh;
+ 578:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <thresh>
+ 57c:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <thresh+0x1>
+ 580:	90 93 05 01 	sts	0x0105, r25	; 0x800105 <T+0x1>
+ 584:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <T>
+		}
+
+		if (N > 2500){								// si pasan 2.5 segundos sin latir
+ 588:	c5 3c       	cpi	r28, 0xC5	; 197
+ 58a:	d9 40       	sbci	r29, 0x09	; 9
+ 58c:	24 f1       	brlt	.+72     	; 0x5d6 <__LOCK_REGION_LENGTH__+0x1d6>
+			thresh = 512;                          // establecer umbral predeterminado
+ 58e:	10 93 03 01 	sts	0x0103, r17	; 0x800103 <thresh+0x1>
+ 592:	00 93 02 01 	sts	0x0102, r16	; 0x800102 <thresh>
+			P = 512;                               // establecer P por defecto
+ 596:	10 93 07 01 	sts	0x0107, r17	; 0x800107 <P+0x1>
+ 59a:	00 93 06 01 	sts	0x0106, r16	; 0x800106 <P>
+			T = 512;                               // establecer T por defecto
+ 59e:	10 93 05 01 	sts	0x0105, r17	; 0x800105 <T+0x1>
+ 5a2:	00 93 04 01 	sts	0x0104, r16	; 0x800104 <T>
+			lastBeatTime = sampleCounter;          // actualizar lastBeatTime
+ 5a6:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <sampleCounter>
+ 5aa:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <sampleCounter+0x1>
+ 5ae:	a0 91 18 01 	lds	r26, 0x0118	; 0x800118 <sampleCounter+0x2>
+ 5b2:	b0 91 19 01 	lds	r27, 0x0119	; 0x800119 <sampleCounter+0x3>
+ 5b6:	80 93 12 01 	sts	0x0112, r24	; 0x800112 <lastBeatTime>
+ 5ba:	90 93 13 01 	sts	0x0113, r25	; 0x800113 <lastBeatTime+0x1>
+ 5be:	a0 93 14 01 	sts	0x0114, r26	; 0x800114 <lastBeatTime+0x2>
+ 5c2:	b0 93 15 01 	sts	0x0115, r27	; 0x800115 <lastBeatTime+0x3>
+			firstBeat = 1;                      // configurar estos para evitar el ruido			//SE CAMBIA EL TRUE POR 1
+ 5c6:	d0 92 35 01 	sts	0x0135, r13	; 0x800135 <firstBeat+0x1>
+ 5ca:	c0 92 34 01 	sts	0x0134, r12	; 0x800134 <firstBeat>
+			secondBeat = 0;                    // cuando recuperamos el latido del corazón			//SE CAMBIA EL FALSE POR 0
+ 5ce:	10 92 11 01 	sts	0x0111, r1	; 0x800111 <__data_end+0x1>
+ 5d2:	10 92 10 01 	sts	0x0110, r1	; 0x800110 <__data_end>
+		}
+
+		sei();                                   // ¡habilita las interrupciones cuando hayas terminado!
+ 5d6:	78 94       	sei
+
+		int pulso = (PINC|0X01);					//Lee el valor del pulsometro conectado al puerto Analogo A0
+ 5d8:	86 b1       	in	r24, 0x06	; 6
+		if (pulso >= 520) {						// Enciende led 13 cuando el pulso pasa de un valor (debe ajustarse)
+			PORTB==(PORTC|0Xb00001000);					//PONE A 1 EL BIT PB5 (PIN 13 DE LA TARJETA ARDUINO UNO)
+		}
+		else{
+			PORTB=PORTC&0X11110111;					//PONE A 0 EL BIT PB5 (PIN 13 DE LA TARJETA ARDUINO UNO)
+ 5da:	88 b1       	in	r24, 0x08	; 8
+ 5dc:	81 71       	andi	r24, 0x11	; 17
+ 5de:	85 b9       	out	0x05, r24	; 5
+ 5e0:	64 ce       	rjmp	.-824    	; 0x2aa <main+0xc4>
+					for(int i=0; i<=9; i++){										// sembrar el total acumulado para obtener un BPM realista al inicio
+						rate[i] = IBI;
+					}
+				}
+				
+				if(firstBeat){														// si es la primera vez que encontramos un ritmo, si firstBeat == TRUE
+ 5e2:	80 91 34 01 	lds	r24, 0x0134	; 0x800134 <firstBeat>
+ 5e6:	90 91 35 01 	lds	r25, 0x0135	; 0x800135 <firstBeat+0x1>
+ 5ea:	89 2b       	or	r24, r25
+ 5ec:	09 f4       	brne	.+2      	; 0x5f0 <__LOCK_REGION_LENGTH__+0x1f0>
+ 5ee:	4a cf       	rjmp	.-364    	; 0x484 <__LOCK_REGION_LENGTH__+0x84>
+					firstBeat = 0;													// borrar primero					//cambie false por 0
+ 5f0:	10 92 35 01 	sts	0x0135, r1	; 0x800135 <firstBeat+0x1>
+ 5f4:	10 92 34 01 	sts	0x0134, r1	; 0x800134 <firstBeat>
+					secondBeat = 1;												// establecer la segunda bandera de ritmo
+ 5f8:	81 e0       	ldi	r24, 0x01	; 1
+ 5fa:	90 e0       	ldi	r25, 0x00	; 0
+ 5fc:	90 93 11 01 	sts	0x0111, r25	; 0x800111 <__data_end+0x1>
+ 600:	80 93 10 01 	sts	0x0110, r24	; 0x800110 <__data_end>
+					sei();															// Hanilitar interrupciones nuevamente
+ 604:	78 94       	sei
+		else{
+			PORTB=PORTC&0X11110111;					//PONE A 0 EL BIT PB5 (PIN 13 DE LA TARJETA ARDUINO UNO)
+		}
+	}				
+    	return 0;
+}
+ 606:	80 e0       	ldi	r24, 0x00	; 0
+ 608:	90 e0       	ldi	r25, 0x00	; 0
+ 60a:	df 91       	pop	r29
+ 60c:	cf 91       	pop	r28
+ 60e:	1f 91       	pop	r17
+ 610:	0f 91       	pop	r16
+ 612:	ff 90       	pop	r15
+ 614:	ef 90       	pop	r14
+ 616:	df 90       	pop	r13
+ 618:	cf 90       	pop	r12
+ 61a:	bf 90       	pop	r11
+ 61c:	af 90       	pop	r10
+ 61e:	9f 90       	pop	r9
+ 620:	8f 90       	pop	r8
+ 622:	7f 90       	pop	r7
+ 624:	6f 90       	pop	r6
+ 626:	5f 90       	pop	r5
+ 628:	4f 90       	pop	r4
+ 62a:	08 95       	ret
+
+0000062c <__divmodhi4>:
+ 62c:	97 fb       	bst	r25, 7
+ 62e:	07 2e       	mov	r0, r23
+ 630:	16 f4       	brtc	.+4      	; 0x636 <__divmodhi4+0xa>
+ 632:	00 94       	com	r0
+ 634:	07 d0       	rcall	.+14     	; 0x644 <__divmodhi4_neg1>
+ 636:	77 fd       	sbrc	r23, 7
+ 638:	09 d0       	rcall	.+18     	; 0x64c <__divmodhi4_neg2>
+ 63a:	0e 94 49 03 	call	0x692	; 0x692 <__udivmodhi4>
+ 63e:	07 fc       	sbrc	r0, 7
+ 640:	05 d0       	rcall	.+10     	; 0x64c <__divmodhi4_neg2>
+ 642:	3e f4       	brtc	.+14     	; 0x652 <__divmodhi4_exit>
+
+00000644 <__divmodhi4_neg1>:
+ 644:	90 95       	com	r25
+ 646:	81 95       	neg	r24
+ 648:	9f 4f       	sbci	r25, 0xFF	; 255
+ 64a:	08 95       	ret
+
+0000064c <__divmodhi4_neg2>:
+ 64c:	70 95       	com	r23
+ 64e:	61 95       	neg	r22
+ 650:	7f 4f       	sbci	r23, 0xFF	; 255
+
+00000652 <__divmodhi4_exit>:
+ 652:	08 95       	ret
+
+00000654 <__divmodsi4>:
+ 654:	05 2e       	mov	r0, r21
+ 656:	97 fb       	bst	r25, 7
+ 658:	1e f4       	brtc	.+6      	; 0x660 <__divmodsi4+0xc>
+ 65a:	00 94       	com	r0
+ 65c:	0e 94 41 03 	call	0x682	; 0x682 <__negsi2>
+ 660:	57 fd       	sbrc	r21, 7
+ 662:	07 d0       	rcall	.+14     	; 0x672 <__divmodsi4_neg2>
+ 664:	0e 94 5d 03 	call	0x6ba	; 0x6ba <__udivmodsi4>
+ 668:	07 fc       	sbrc	r0, 7
+ 66a:	03 d0       	rcall	.+6      	; 0x672 <__divmodsi4_neg2>
+ 66c:	4e f4       	brtc	.+18     	; 0x680 <__divmodsi4_exit>
+ 66e:	0c 94 41 03 	jmp	0x682	; 0x682 <__negsi2>
+
+00000672 <__divmodsi4_neg2>:
+ 672:	50 95       	com	r21
+ 674:	40 95       	com	r20
+ 676:	30 95       	com	r19
+ 678:	21 95       	neg	r18
+ 67a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 67c:	4f 4f       	sbci	r20, 0xFF	; 255
+ 67e:	5f 4f       	sbci	r21, 0xFF	; 255
+
+00000680 <__divmodsi4_exit>:
+ 680:	08 95       	ret
+
+00000682 <__negsi2>:
+ 682:	90 95       	com	r25
+ 684:	80 95       	com	r24
+ 686:	70 95       	com	r23
+ 688:	61 95       	neg	r22
+ 68a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 68c:	8f 4f       	sbci	r24, 0xFF	; 255
+ 68e:	9f 4f       	sbci	r25, 0xFF	; 255
+ 690:	08 95       	ret
+
+00000692 <__udivmodhi4>:
+ 692:	aa 1b       	sub	r26, r26
+ 694:	bb 1b       	sub	r27, r27
+ 696:	51 e1       	ldi	r21, 0x11	; 17
+ 698:	07 c0       	rjmp	.+14     	; 0x6a8 <__udivmodhi4_ep>
+
+0000069a <__udivmodhi4_loop>:
+ 69a:	aa 1f       	adc	r26, r26
+ 69c:	bb 1f       	adc	r27, r27
+ 69e:	a6 17       	cp	r26, r22
+ 6a0:	b7 07       	cpc	r27, r23
+ 6a2:	10 f0       	brcs	.+4      	; 0x6a8 <__udivmodhi4_ep>
+ 6a4:	a6 1b       	sub	r26, r22
+ 6a6:	b7 0b       	sbc	r27, r23
+
+000006a8 <__udivmodhi4_ep>:
+ 6a8:	88 1f       	adc	r24, r24
+ 6aa:	99 1f       	adc	r25, r25
+ 6ac:	5a 95       	dec	r21
+ 6ae:	a9 f7       	brne	.-22     	; 0x69a <__udivmodhi4_loop>
+ 6b0:	80 95       	com	r24
+ 6b2:	90 95       	com	r25
+ 6b4:	bc 01       	movw	r22, r24
+ 6b6:	cd 01       	movw	r24, r26
+ 6b8:	08 95       	ret
+
+000006ba <__udivmodsi4>:
+ 6ba:	a1 e2       	ldi	r26, 0x21	; 33
+ 6bc:	1a 2e       	mov	r1, r26
+ 6be:	aa 1b       	sub	r26, r26
+ 6c0:	bb 1b       	sub	r27, r27
+ 6c2:	fd 01       	movw	r30, r26
+ 6c4:	0d c0       	rjmp	.+26     	; 0x6e0 <__udivmodsi4_ep>
+
+000006c6 <__udivmodsi4_loop>:
+ 6c6:	aa 1f       	adc	r26, r26
+ 6c8:	bb 1f       	adc	r27, r27
+ 6ca:	ee 1f       	adc	r30, r30
+ 6cc:	ff 1f       	adc	r31, r31
+ 6ce:	a2 17       	cp	r26, r18
+ 6d0:	b3 07       	cpc	r27, r19
+ 6d2:	e4 07       	cpc	r30, r20
+ 6d4:	f5 07       	cpc	r31, r21
+ 6d6:	20 f0       	brcs	.+8      	; 0x6e0 <__udivmodsi4_ep>
+ 6d8:	a2 1b       	sub	r26, r18
+ 6da:	b3 0b       	sbc	r27, r19
+ 6dc:	e4 0b       	sbc	r30, r20
+ 6de:	f5 0b       	sbc	r31, r21
+
+000006e0 <__udivmodsi4_ep>:
+ 6e0:	66 1f       	adc	r22, r22
+ 6e2:	77 1f       	adc	r23, r23
+ 6e4:	88 1f       	adc	r24, r24
+ 6e6:	99 1f       	adc	r25, r25
+ 6e8:	1a 94       	dec	r1
+ 6ea:	69 f7       	brne	.-38     	; 0x6c6 <__udivmodsi4_loop>
+ 6ec:	60 95       	com	r22
+ 6ee:	70 95       	com	r23
+ 6f0:	80 95       	com	r24
+ 6f2:	90 95       	com	r25
+ 6f4:	9b 01       	movw	r18, r22
+ 6f6:	ac 01       	movw	r20, r24
+ 6f8:	bd 01       	movw	r22, r26
+ 6fa:	cf 01       	movw	r24, r30
+ 6fc:	08 95       	ret
+
+000006fe <_exit>:
+ 6fe:	f8 94       	cli
+
+00000700 <__stop_program>:
+ 700:	ff cf       	rjmp	.-2      	; 0x700 <__stop_program>
